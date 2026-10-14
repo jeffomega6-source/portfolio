@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: folio-studio
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerCommand: php artisan package:discover --ansi && php artisan migrate --force && apache2-foreground
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_URL
+        sync: false
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: LOG_LEVEL
+        value: info
