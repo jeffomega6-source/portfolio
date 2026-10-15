@@ -21,4 +21,4 @@ RUN sed -ri 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-availabl
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R ug+rwx storage bootstrap/cache
 EXPOSE 80
-CMD ["sh", "-c", "php artisan package:discover --ansi && php artisan migrate --force && apache2-foreground"]
+CMD ["sh", "-c", "set -e; PORT=${PORT:-80}; sed -ri \"s/^Listen 80$/Listen ${PORT}/\" /etc/apache2/ports.conf; sed -ri \"s/<VirtualHost \\*:80>/<VirtualHost *:${PORT}>/\" /etc/apache2/sites-available/000-default.conf; php artisan package:discover --ansi; php artisan migrate --force; exec apache2-foreground"]
