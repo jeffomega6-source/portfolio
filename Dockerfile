@@ -9,8 +9,7 @@ RUN npm run build
 FROM php:8.4-apache
 RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev libzip-dev libonig-dev unzip \
     && docker-php-ext-install pdo_pgsql mbstring zip opcache \
-    && (a2dismod mpm_event || true) \
-    && (a2dismod mpm_worker || true) \
+    && for module in /etc/apache2/mods-enabled/mpm_*.load; do [ "$(basename "$module")" = "mpm_prefork.load" ] || rm -f "$module" "${module%.load}.conf"; done \
     && a2enmod mpm_prefork rewrite \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
