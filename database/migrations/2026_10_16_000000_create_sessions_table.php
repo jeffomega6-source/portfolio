@@ -8,6 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('sessions')) {
+            if (!Schema::hasColumns('sessions', [
+                'id',
+                'user_id',
+                'ip_address',
+                'user_agent',
+                'payload',
+                'last_activity',
+            ])) {
+                throw new RuntimeException('The existing sessions table does not have the expected Laravel session columns.');
+            }
+
+            return;
+        }
+
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -20,6 +35,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('sessions');
+        // The table may predate this migration, so rolling it back must not delete session data.
     }
 };
