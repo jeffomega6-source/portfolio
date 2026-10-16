@@ -42,7 +42,8 @@ class PortfolioController extends Controller
     public function update(Request $request, Portfolio $portfolio): RedirectResponse
     {
         $this->authorizePortfolio($portfolio, $request);
-        $portfolio->update($this->validated($request));
+        $data = $this->validated($request);
+        $portfolio->update($data);
 
         return redirect()->route('templates', $portfolio)->with('success', 'Your changes are saved.');
     }
@@ -52,7 +53,7 @@ class PortfolioController extends Controller
         $data = $request->validate([
             'full_name' => ['required', 'string', 'max:120'], 'email' => ['required', 'email', 'max:180'],
             'phone' => ['nullable', 'string', 'max:40'], 'address' => ['nullable', 'string', 'max:180'],
-            'about' => ['nullable', 'string', 'max:3000'], 'profile_picture' => ['nullable', 'url', 'max:500'],
+            'about' => ['nullable', 'string', 'max:3000'],
             'education_text' => ['nullable', 'string', 'max:5000'], 'skills_text' => ['nullable', 'string', 'max:2000'],
             'projects_text' => ['nullable', 'string', 'max:6000'], 'experience_text' => ['nullable', 'string', 'max:6000'],
             'links_text' => ['nullable', 'string', 'max:3000'], 'is_complete' => ['nullable', 'boolean'],
@@ -108,4 +109,5 @@ class PortfolioController extends Controller
     {
         abort_unless($request->user() && $portfolio->user_id === $request->user()->id, 403);
     }
+
 }
