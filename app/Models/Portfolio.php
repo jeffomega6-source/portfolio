@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Portfolio extends Model
@@ -21,6 +22,21 @@ class Portfolio extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getProfilePictureUrlAttribute(): ?string
+    {
+        $picture = $this->profile_picture;
+
+        if (! $picture) {
+            return null;
+        }
+
+        if (filter_var($picture, FILTER_VALIDATE_URL)) {
+            return $picture;
+        }
+
+        return Storage::disk(config('filesystems.photo_disk', 'public'))->url($picture);
     }
 
     protected static function booted(): void

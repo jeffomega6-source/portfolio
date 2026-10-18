@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+    'photo_disk' => env('PHOTO_DISK', 'public'),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -58,6 +60,19 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'report' => false,
+        ],
+
+        'supabase' => [
+            'driver' => 's3',
+            'key' => env('SUPABASE_S3_KEY'),
+            'secret' => env('SUPABASE_S3_SECRET'),
+            'region' => env('SUPABASE_S3_REGION'),
+            'bucket' => env('SUPABASE_BUCKET', 'portfolio-photos'),
+            'endpoint' => rtrim(env('SUPABASE_URL', ''), '/').'/storage/v1/s3',
+            'url' => rtrim(env('SUPABASE_URL', ''), '/').'/storage/v1/object/public/'.env('SUPABASE_BUCKET', 'portfolio-photos'),
+            'use_path_style_endpoint' => true,
+            'throw' => true,
+            'report' => true,
         ],
 
     ],

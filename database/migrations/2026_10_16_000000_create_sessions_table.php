@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         if (Schema::hasTable('sessions')) {
-            if (!Schema::hasColumns('sessions', [
+            if (! Schema::hasColumns('sessions', [
                 'id',
                 'user_id',
                 'ip_address',
