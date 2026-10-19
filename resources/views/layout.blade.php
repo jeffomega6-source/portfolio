@@ -17,7 +17,7 @@
 <a class="nav-action nav-signin" href="{{ route('login') }}"><span aria-hidden="true">→</span> Sign in</a><a class="nav-action nav-signup" href="{{ route('register') }}"><span aria-hidden="true">＋</span> Create account</a>
 @endauth
 </nav></header>
-@unless(request()->routeIs('home'))
+@unless(request()->routeIs('home', 'preview'))
 @php
     $backUrl = match (true) {
         request()->routeIs('templates') => route('portfolios.edit', $portfolio),
