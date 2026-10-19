@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('auth.css') }}">
     <link rel="stylesheet" href="{{ asset('portalink.css') }}">
     @if (file_exists(public_path('build/manifest.json'))) @vite(['resources/css/app.css','resources/js/app.js']) @endif
+    <link rel="stylesheet" href="{{ asset('brand-theme.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
