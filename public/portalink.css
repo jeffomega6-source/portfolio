@@ -373,25 +373,34 @@
 }
 
 .preview-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     min-height: 64px;
     padding: 9px max(calc((100vw - 1160px)/2), 5vw);
     gap: 12px;
     font-size: 12px;
 }
 
+.preview-back {
+    justify-self: start;
+}
+
 .preview-status {
     display: inline-flex;
     align-items: center;
+    justify-self: center;
     gap: 9px;
     white-space: nowrap;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .3px;
+    text-align: center;
 }
 
 .preview-actions {
     display: flex;
     align-items: center;
+    justify-self: end;
     gap: 7px;
 }
 
@@ -446,7 +455,7 @@
     z-index: 7;
     min-height: 80px;
     height: auto;
-    gap: 22px;
+    gap: 24px;
     padding: 12px 22px;
     background: var(--pf-bg);
     font-size: 13px;
@@ -464,7 +473,13 @@
     gap: 10px;
 }
 
-.portfolio-nav > div a {
+.portfolio-menu {
+    margin-left: auto;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.portfolio-menu a {
     min-height: 42px;
     display: inline-flex;
     align-items: center;
@@ -473,17 +488,17 @@
     transition: color .16s, background-color .16s;
 }
 
-.portfolio-nav > div a:hover {
+.portfolio-menu a:hover {
     color: var(--pf-accent);
     background: color-mix(in srgb, var(--pf-accent) 10%, transparent);
 }
 
 .portfolio-contact {
-    display: grid;
-    gap: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-color: color-mix(in srgb, var(--pf-accent) 40%, transparent);
-    padding: 8px 13px;
-    text-align: right;
+    padding: 0 16px;
     transition: color .16s, background-color .16s, border-color .16s;
 }
 
@@ -493,16 +508,8 @@
     color: #fff;
 }
 
-.portfolio-contact > span:first-child {
-    font-weight: 700;
-}
-
-.portfolio-contact-email {
-    max-width: 260px;
-    overflow: hidden;
-    font-size: 10px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.portfolio-footer {
+    scroll-margin-top: 220px;
 }
 
 .portfolio-simple .portfolio-hero {
@@ -790,6 +797,7 @@
     }
 
     .preview-toolbar {
+        display: flex;
         position: relative;
         top: auto;
         flex-wrap: wrap;
@@ -826,23 +834,18 @@
         font-size: 11px;
     }
 
-    .portfolio-nav > div {
-        gap: 2px;
+    .portfolio-menu {
+        gap: 3px;
     }
 
-    .portfolio-nav > div a {
+    .portfolio-menu a {
         min-height: 38px;
         padding: 0 8px;
     }
 
     .portfolio-contact {
-        padding: 6px 8px;
+        padding: 0 10px !important;
         font-size: 11px;
-    }
-
-    .portfolio-contact-email {
-        max-width: 130px;
-        font-size: 9px;
     }
 
     .portfolio-modern .portfolio-hero,
@@ -916,12 +919,8 @@
         white-space: nowrap;
     }
 
-    .portfolio-nav > div a {
+    .portfolio-menu a {
         padding: 0 6px;
-    }
-
-    .portfolio-contact-email {
-        max-width: 88px;
     }
 
     .dashboard-shell {

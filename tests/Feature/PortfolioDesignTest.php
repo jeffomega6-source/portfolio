@@ -44,8 +44,12 @@ class PortfolioDesignTest extends TestCase
             ->assertSee('Copy share link')
             ->assertSee('Change style')
             ->assertSee('Edit details')
+            ->assertSee('href="#contact"', false)
+            ->assertSee('id="contact"', false)
+            ->assertSee('mailto:john@example.test')
             ->assertSee('john@example.test')
             ->assertDontSee('Back to my portfolios')
-            ->assertDontSee('Let’s talk');
+            ->assertDontSee('Let’s talk')
+            ->assertDontSee('portfolio-contact-email');
     }
 }
