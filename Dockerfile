@@ -7,7 +7,7 @@ COPY vite.config.js .
 RUN npm run build
 
 FROM php:8.4-apache
-RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev libzip-dev libonig-dev unzip \
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq-dev libzip-dev libonig-dev unzip \
     && docker-php-ext-install pdo_pgsql mbstring zip opcache \
     && for module in mpm_event mpm_worker mpm_prefork; do a2dismod "$module" || true; done \
     && rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \

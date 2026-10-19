@@ -47,6 +47,12 @@ SUPABASE_S3_KEY=<Supabase S3 access key ID>
 SUPABASE_S3_SECRET=<Supabase S3 secret access key>
 ```
 
+The Docker image installs system CA certificates to verify Supabase's TLS
+certificate. Leave `AWS_CA_BUNDLE` unset on Railway unless you use a custom
+trusted CA bundle. For local Windows PHP installations that report an
+untrusted issuer, set it to your installed CA bundle (for Laragon, commonly
+`C:/laragon/etc/ssl/cacert.pem`). TLS verification remains enabled.
+
 Generate the app key locally with PHP 8.3 or newer:
 
 ```powershell

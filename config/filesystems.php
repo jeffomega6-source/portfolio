@@ -71,6 +71,9 @@ return [
             'endpoint' => rtrim(env('SUPABASE_URL', ''), '/').'/storage/v1/s3',
             'url' => rtrim(env('SUPABASE_URL', ''), '/').'/storage/v1/object/public/'.env('SUPABASE_BUCKET', 'portfolio-photos'),
             'use_path_style_endpoint' => true,
+            'http' => [
+                'verify' => env('AWS_CA_BUNDLE') ?: true,
+            ],
             'throw' => true,
             'report' => true,
         ],
