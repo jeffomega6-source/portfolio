@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('portfolios.index'));
     }
 
     public function registerForm(): View
@@ -49,7 +49,7 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('portfolios.index'));
     }
 
     public function logout(Request $request): RedirectResponse

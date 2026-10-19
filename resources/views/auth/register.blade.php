@@ -1,7 +1,7 @@
 @extends('layout')
-@section('title','Create an account — Folio Studio')
+@section('title','Create an account — Portalink')
 @section('content')
-<main class="auth-shell"><div class="auth-card"><div class="auth-mark">f.</div><div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div><h1>Make room for you.</h1><p>Create an account to save and manage your portfolios.</p>
+<main class="auth-shell"><div class="auth-card"><img class="auth-brand-logo" src="{{ asset('images/portalink-logo.png') }}" alt="Portalink"><div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div><h1>Make room for you.</h1><p>Create an account to save and manage your portfolios.</p>
 <form method="POST" action="{{ route('register.store') }}">@csrf
 <label class="field">Your name<input name="name" value="{{ old('name') }}" autocomplete="name" maxlength="120" required autofocus>@error('name')<small class="field-error">{{ $message }}</small>@enderror</label>
 <label class="field">Email address<input type="email" name="email" value="{{ old('email') }}" autocomplete="email" required>@error('email')<small class="field-error">{{ $message }}</small>@enderror</label>

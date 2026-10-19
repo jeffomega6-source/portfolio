@@ -14,11 +14,14 @@ class PortfolioController extends Controller
 {
     public function index(Request $request): View
     {
-        $portfolios = $request->user()
-            ? $request->user()->portfolios()->latest()->get()
-            : collect();
+        $portfolios = $request->user()->portfolios()->latest()->get();
 
-        return view('home', compact('portfolios'));
+        return view('portfolios.index', compact('portfolios'));
+    }
+
+    public function home(): View
+    {
+        return view('home');
     }
 
     public function create(): View
@@ -186,7 +189,7 @@ class PortfolioController extends Controller
         $portfolio->delete();
         $this->deleteManagedProfilePicture($profilePicture);
 
-        return redirect()->route('home')->with('success', 'Portfolio deleted.');
+        return redirect()->route('portfolios.index')->with('success', 'Portfolio deleted.');
     }
 
     private function authorizePortfolio(Portfolio $portfolio, Request $request): void

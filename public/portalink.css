@@ -1,0 +1,290 @@
+.brand-logo-window {
+    position: relative;
+    display: block;
+    flex: 0 0 136px;
+    width: 136px;
+    height: 72px;
+    overflow: hidden;
+}
+
+.brand-logo-window img {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    width: 136px;
+    height: 136px;
+    max-width: none;
+}
+
+.topbar nav {
+    gap: 12px;
+    color: #344238;
+}
+
+.nav-action,
+.nav-logout button {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 13px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font: 600 13px 'DM Sans', sans-serif;
+    transition: background-color .18s, border-color .18s, transform .18s;
+}
+
+.nav-action:hover,
+.nav-logout button:hover {
+    background: #f0f3ec;
+    border-color: #e2e8df;
+}
+
+.nav-action:focus-visible,
+.nav-logout button:focus-visible,
+.page-backbar a:focus-visible,
+.button:focus-visible,
+.dash-actions a:focus-visible,
+.dash-actions button:focus-visible {
+    outline: 3px solid #8bbfef;
+    outline-offset: 3px;
+}
+
+.nav-action > span,
+.nav-logout button > span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+.nav-create,
+.nav-signup {
+    border: 1px solid #dfe5dc;
+    background: #fff;
+}
+
+.nav-signup {
+    background: var(--forest);
+    color: #fff;
+    border-color: var(--forest);
+}
+
+.nav-signup:hover {
+    background: #1c3023;
+    border-color: #1c3023;
+}
+
+.nav-logout {
+    margin: 0;
+}
+
+.nav-logout button {
+    color: #657167;
+    background: transparent;
+    border-color: #e6e9e4;
+    cursor: pointer;
+}
+
+.page-backbar {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 16px 28px 0;
+}
+
+.page-backbar .back-link {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid #e4e8e1;
+    border-radius: 7px;
+    background: #fff;
+    color: #435146;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.page-backbar .back-link:hover {
+    background: #f2f5ef;
+}
+
+.page-backbar .back-link span {
+    font-size: 18px;
+}
+
+.dashboard-shell {
+    max-width: 1160px;
+    min-height: calc(100vh - 210px);
+    margin: auto;
+    padding: 16px 28px 65px;
+}
+
+.dashboard-shell .dashboard {
+    padding: 38px 0 0;
+}
+
+.dashboard-shell .section-heading {
+    align-items: center;
+    gap: 20px;
+}
+
+.dashboard-shell .section-heading h1 {
+    margin: 8px 0 0;
+    font: 600 30px Manrope, sans-serif;
+    letter-spacing: -1px;
+}
+
+.dashboard-intro {
+    margin: 8px 0 0;
+    color: #778078;
+    font-size: 13px;
+}
+
+.dashboard-shell .section-heading > .button {
+    flex: 0 0 auto;
+}
+
+.dashboard-card .mini-preview {
+    position: relative;
+    transition: filter .18s, transform .18s;
+}
+
+.dashboard-card .mini-preview:hover {
+    filter: brightness(.97);
+}
+
+.mini-preview > small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.dash-card-info h2 {
+    margin: 0 0 4px;
+    font-size: 14px;
+}
+
+.dash-card-info .status-dot {
+    color: #61735e;
+    font-size: 10px;
+}
+
+.dash-actions a,
+.dash-actions button {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+}
+
+.dash-actions a:hover {
+    color: #263c2d;
+}
+
+.auth-brand-logo {
+    display: block;
+    width: 136px;
+    height: 74px;
+    object-fit: cover;
+    object-position: center;
+    margin: -18px 0 16px -8px;
+}
+
+@media (max-width: 760px) {
+    .topbar {
+        padding: 0 14px;
+    }
+
+    .topbar nav {
+        gap: 5px;
+    }
+
+    .topbar nav > a:first-child {
+        display: inline-flex;
+    }
+
+    .nav-action,
+    .nav-logout button {
+        min-height: 38px;
+        gap: 5px;
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .brand-logo-window {
+        flex-basis: 110px;
+        width: 110px;
+        height: 62px;
+    }
+
+    .brand-logo-window img {
+        top: -22px;
+        width: 110px;
+        height: 110px;
+    }
+
+    .page-backbar {
+        padding: 13px 18px 0;
+    }
+
+    .dashboard-shell {
+        padding: 10px 19px 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        padding: 0 10px;
+    }
+
+    .brand-logo-window {
+        flex-basis: 82px;
+        width: 82px;
+        height: 54px;
+    }
+
+    .brand-logo-window img {
+        top: -16px;
+        width: 82px;
+        height: 82px;
+    }
+
+    .topbar nav {
+        gap: 2px;
+    }
+
+    .nav-action,
+    .nav-logout button {
+        min-height: 36px;
+        gap: 3px;
+        padding: 0 5px;
+        font-size: 10px;
+    }
+
+    .nav-action > span,
+    .nav-logout button > span {
+        font-size: 14px;
+    }
+
+    .dashboard-shell {
+        padding: 6px 17px 42px;
+    }
+
+    .dashboard-shell .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .dashboard-shell .section-heading h1 {
+        font-size: 25px;
+    }
+
+    .auth-brand-logo {
+        margin-top: -10px;
+    }
+}

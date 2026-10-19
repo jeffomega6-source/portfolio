@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PortfolioController::class, 'index'])->name('home');
+Route::get('/', [PortfolioController::class, 'home'])->name('home');
 Route::get('/p/{portfolio:slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
 
 Route::middleware('guest')->group(function () {
@@ -17,6 +17,7 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/portfolios', [PortfolioController::class, 'index'])->name('portfolios.index');
     Route::get('/portfolios/create', [PortfolioController::class, 'create'])->name('portfolios.create');
     Route::post('/portfolios', [PortfolioController::class, 'store'])->name('portfolios.store');
     Route::get('/portfolios/{portfolio}/edit', [PortfolioController::class, 'edit'])->name('portfolios.edit');
